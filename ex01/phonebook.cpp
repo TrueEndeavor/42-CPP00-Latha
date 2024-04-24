@@ -6,46 +6,56 @@
 /*   By: lannur-s <lannur-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 10:45:27 by lannur-s          #+#    #+#             */
-/*   Updated: 2024/04/23 15:59:48 by lannur-s         ###   ########.fr       */
+/*   Updated: 2024/04/24 17:43:57 by lannur-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
 
-void    addContact(int index, 
-				std::string firstName, 
-				std::string lastName, 
-				std::string nickName)
+// Default constructor
+PhoneBook::PhoneBook()
 {
-	Contact freshContact(index, firstName, lastName, nickName);
-	//for (int i = 0; i < 8; i++)
-		//if (size of cont_array < 8)
-		//	cont_array[i] = freshContact;
-		//	return ;
-		//else
-			// replace the first
+	return ;
 }
 
-/*void    searchContact()
+// Destructor
+PhoneBook::~PhoneBook()
+{
+	return ;
+}
+
+void	PhoneBook::addContact(int index, Contact contact)
+{
+	this->cont_array[index] = contact;
+}
+
+void    PhoneBook::searchContact(void)
 {
 	//display contacts as a list of 4 columns: 
 	//index, first name, last name and nickname.
+	int index;
 	
- Each column must be 10 characters wide. A pipe character (’|’) separates
-them. The text must be right-aligned. If the text is longer than the column,
-it must be truncated and the last displayable character must be replaced by a
-dot (’.’).
+	displayContacts();
+	std::cout << "Enter the index:";
+	if (!(std::cin >> index))
+	{
+        // handle error
+	}
+	this->cont_array[index].displayContactInfo();
+/* 
 ◦ Then, prompt the user again for the index of the entry to display. If the index
 is out of range or wrong, define a relevant behavior. Otherwise, display the
-contact information, one field per line
+contact information, one field per line */
 
 }
 
-void    exit()
+void    PhoneBook::displayContacts(void)
 {
-	//The program quits and the contacts are lost forever
+	for (int i = 0; i < 8; i++)
+	{
+		std::cout << this->cont_array[i].getIndex() << std::cout << "| ";
+		std::cout << std::setw(10) << formatWidth(this->cont_array[i].getFirstName()) << std::cout << "| ";
+		std::cout << std::setw(10) << formatWidth(this->cont_array[i].getLastName()) << std::cout << "| ";
+		std::cout << std::setw(10) << formatWidth(this->cont_array[i].getNickName()) << std::endl;
+	}
 }
-
-Any other input is discarded.
-Once a command has been correctly executed, the program waits for another one. It
-stops when the user inputs EXIT.*/

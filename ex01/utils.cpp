@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   utils.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lannur-s <lannur-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/23 11:18:32 by lannur-s          #+#    #+#             */
-/*   Updated: 2024/04/24 17:06:19 by lannur-s         ###   ########.fr       */
+/*   Created: 2024/04/24 16:54:53 by lannur-s          #+#    #+#             */
+/*   Updated: 2024/04/24 17:09:00 by lannur-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#include "utils.hpp"
 
-#include <iostream>
-#include <string>
-#include <iomanip>
-
-# include "contact.hpp"
-# include "utils.hpp"
-
-class   PhoneBook
+std::string    formatWidth(std::string str)
 {
-	private:
-		Contact cont_array[8];
-		void display_header();
-	public:
-		PhoneBook(void);
-		~PhoneBook(void);
-		
-		void addContact(int index, Contact contact);
-		void searchContact(void);
-		void displayContacts(void);
-};
-
-#endif
+	if (str.length() > 10)
+	{
+		str.resize(9);
+		str.append(".");
+	}
+	return (str);
+}

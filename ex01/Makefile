@@ -6,37 +6,38 @@
 #    By: lannur-s <lannur-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/23 10:42:15 by lannur-s          #+#    #+#              #
-#    Updated: 2024/04/23 13:32:15 by lannur-s         ###   ########.fr        #
+#    Updated: 2024/04/24 17:47:39 by lannur-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= myphonebook
 	
 CC		= c++
-FLAGS	= -Wall -Wextra -Werror -std=c++98 -I./include
+FLAGS	= -Wall -Wextra -Werror -std=c++98
 RM		= rm -rf
 
-INCLUDES = -I./include
+INCLUDE = -I./include
+
 
 SRC = contact.cpp \
 		phonebook.cpp \
+		utils.cpp \
 		main.cpp
 
+OBJ = $(SRC:.cpp=.o)
+
 %.o: %.cpp
-	$(CC) $(CCFLAGS) $(INCLUDES) $(SRC) $< -o $@
-
-OBJ = $(SRC:%.cpp=%.o)
-
-
+	$(CC) $(FLAGS) $(INCLUDE) -c $< -o $@
+	
 $(NAME): $(OBJ)
-	@ $(CC) $(FLAGS) $(INCLUDES) $(OBJ) -o $(NAME)
+	@ $(CC) $(FLAGS) $(INCLUDE) $(OBJ) -o $(NAME)
 
 all: $(NAME)
 
 clean:
 	@$(RM) $(OBJ)
 
-fclean:
+fclean:	clean
 	@$(RM) $(NAME)
 
 re: clean all
