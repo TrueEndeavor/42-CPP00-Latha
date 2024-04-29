@@ -6,7 +6,7 @@
 /*   By: lannur-s <lannur-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:55:08 by lannur-s          #+#    #+#             */
-/*   Updated: 2024/04/24 17:09:10 by lannur-s         ###   ########.fr       */
+/*   Updated: 2024/04/29 15:16:02 by lannur-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@
 #include <string>
 
 std::string    formatWidth(std::string str);
+bool	isValidPhoneNumber(std::string number);
 
 #endif

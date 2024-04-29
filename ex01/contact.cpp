@@ -6,7 +6,7 @@
 /*   By: lannur-s <lannur-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 10:46:07 by lannur-s          #+#    #+#             */
-/*   Updated: 2024/04/24 17:45:48 by lannur-s         ###   ########.fr       */
+/*   Updated: 2024/04/29 12:16:48 by lannur-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@ Contact::Contact()
 	return ;
 }
 
+// Destructor
+Contact::~Contact()
+{
+	return ;
+}
+
+// Parameterized constructor
 Contact::Contact(int index, std::string firstName, std::string lastName, \
 			std::string nickName, std::string phoneNumber)
 {
@@ -28,12 +35,7 @@ Contact::Contact(int index, std::string firstName, std::string lastName, \
 	setPhoneNumber(phoneNumber);
 }
 
-// Destructor
-Contact::~Contact()
-{
-	return ;
-}
-
+// Setters
 void Contact::setIndex(int index)
 {
 	this->index = index;
@@ -58,6 +60,7 @@ void Contact::setPhoneNumber(std::string phoneNumber)
 	this->phoneNumber = phoneNumber;
 }
 
+// Getters
 int Contact::getIndex(void)
 {
 	return (this->index);
@@ -83,7 +86,7 @@ std::string Contact::getPhoneNumber(void)
 	return (this->phoneNumber);
 }
 
-void displayContactInfo(void)
+void Contact::displayContactInfo(void)
 {
 	std::cout << getIndex() << std::endl;
 	std::cout << getFirstName() << std::endl;

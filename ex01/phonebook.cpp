@@ -6,7 +6,7 @@
 /*   By: lannur-s <lannur-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 10:45:27 by lannur-s          #+#    #+#             */
-/*   Updated: 2024/04/24 17:43:57 by lannur-s         ###   ########.fr       */
+/*   Updated: 2024/04/29 16:13:26 by lannur-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void    PhoneBook::displayContacts(void)
 {
 	for (int i = 0; i < 8; i++)
 	{
-		std::cout << this->cont_array[i].getIndex() << std::cout << "| ";
+		std::cout << std::right << this->cont_array[i].getIndex() << std::cout << "| ";
 		std::cout << std::setw(10) << formatWidth(this->cont_array[i].getFirstName()) << std::cout << "| ";
 		std::cout << std::setw(10) << formatWidth(this->cont_array[i].getLastName()) << std::cout << "| ";
 		std::cout << std::setw(10) << formatWidth(this->cont_array[i].getNickName()) << std::endl;
