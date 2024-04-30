@@ -6,7 +6,7 @@
 /*   By: lannur-s <lannur-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 10:45:27 by lannur-s          #+#    #+#             */
-/*   Updated: 2024/04/29 16:13:26 by lannur-s         ###   ########.fr       */
+/*   Updated: 2024/04/30 14:56:02 by lannur-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 // Default constructor
 PhoneBook::PhoneBook()
 {
-	return ;
+	// Initialize contacts_array elements to default Contact objects with index 0
+	for (int i = 0; i < MAX_CONTACTS; ++i)
+	{
+		contacts_array[i] = Contact();
+	}
 }
 
 // Destructor
@@ -26,36 +30,47 @@ PhoneBook::~PhoneBook()
 
 void	PhoneBook::addContact(int index, Contact contact)
 {
-	this->cont_array[index] = contact;
+	this->contacts_array[index] = contact;
 }
 
 void    PhoneBook::searchContact(void)
 {
-	//display contacts as a list of 4 columns: 
-	//index, first name, last name and nickname.
-	int index;
+	std::string index;
 	
-	displayContacts();
-	std::cout << "Enter the index:";
-	if (!(std::cin >> index))
+	this->displayContacts();
+	while (1)
 	{
-        // handle error
+		std::cout << "\nEnter an index or press ENTER to return: ";
+		std::getline(std::cin, index);
+		if (index.empty())
+		{
+			break ;
+		}
+		else if (index.length() != 1 || index[0] < '1' || index[0] > '8')
+		{
+			std::cout << "Invalid index. Try again.";
+			std::cin.ignore();
+		}
+		else
+		{
+			this->contacts_array[(index[0] - '1')].displayContactInfo();
+			std::cout << "          SEARCH CONTACT        ";
+			//(this->contacts_array[(index[0] - '0')]).displayContactInfo();
+		}
+	//this->displayContacts();
 	}
-	this->cont_array[index].displayContactInfo();
-/* 
-◦ Then, prompt the user again for the index of the entry to display. If the index
-is out of range or wrong, define a relevant behavior. Otherwise, display the
-contact information, one field per line */
-
 }
 
 void    PhoneBook::displayContacts(void)
 {
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < MAX_CONTACTS; i++)
 	{
-		std::cout << std::right << this->cont_array[i].getIndex() << std::cout << "| ";
-		std::cout << std::setw(10) << formatWidth(this->cont_array[i].getFirstName()) << std::cout << "| ";
-		std::cout << std::setw(10) << formatWidth(this->cont_array[i].getLastName()) << std::cout << "| ";
-		std::cout << std::setw(10) << formatWidth(this->cont_array[i].getNickName()) << std::endl;
+		if (this->contacts_array[i].getIndex() > 0)
+		{
+			std::cout << std::right << this->contacts_array[i].getIndex() << "| ";
+			std::cout << std::setw(10) << formatWidth(this->contacts_array[i].getFirstName()) << "| ";
+			std::cout << std::setw(10) << formatWidth(this->contacts_array[i].getLastName()) << "| ";
+			std::cout << std::setw(10) << formatWidth(this->contacts_array[i].getNickName()) << std::endl;
+		}
 	}
 }

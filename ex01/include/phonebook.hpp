@@ -6,7 +6,7 @@
 /*   By: lannur-s <lannur-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 11:18:32 by lannur-s          #+#    #+#             */
-/*   Updated: 2024/04/24 17:06:19 by lannur-s         ###   ########.fr       */
+/*   Updated: 2024/04/30 10:16:15 by lannur-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,18 @@
 # include "contact.hpp"
 # include "utils.hpp"
 
-class   PhoneBook
+# define MAX_CONTACTS 8
+
+class	PhoneBook
 {
 	private:
-		Contact cont_array[8];
-		void display_header();
+		Contact contacts_array[MAX_CONTACTS];
+
 	public:
+		// Default constructor
 		PhoneBook(void);
+
+		// Default destructor
 		~PhoneBook(void);
 		
 		void addContact(int index, Contact contact);
