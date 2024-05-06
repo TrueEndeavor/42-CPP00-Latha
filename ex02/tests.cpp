@@ -7,7 +7,7 @@
 //                                                                            //
 // ************************************************************************** //
 
-#include <vector>
+#include <vector> // Header for vector
 #include <algorithm>
 #include <functional>
 #include "Account.hpp"
@@ -15,13 +15,28 @@
 
 int		main( void ) {
 
+    // Create a shorter, more descriptive name for std::vector<Account::t> using typedef
 	typedef std::vector<Account::t>							  accounts_t;
+	
+	// Create a shorter, more descriptive name for std::vector<int> using typedef
 	typedef std::vector<int>								  ints_t;
+	
+	// Create a type alias for a pair of iterators, one from accounts_t and one from ints_t
 	typedef std::pair<accounts_t::iterator, ints_t::iterator> acc_int_t;
 
+	// Initialize an int    array of initial deposit amounts.
 	int	const				amounts[]	= { 42, 54, 957, 432, 1234, 0, 754, 16576 };
+	
+	// Calculate the size of the amounts array to determine the number of elements
 	size_t const			amounts_size( sizeof(amounts) / sizeof(int) );
+	
+	// Initialize a vector of Account objects with initial deposit amounts
+	// Initialize 'accounts' vector with Account objects based on 'amounts' array
+	// Copies values from 'amounts' to create Account objects
+	// Remember, it is not a copy of the array, because it is vector (dynamic array)
 	accounts_t				accounts( amounts, amounts + amounts_size );
+	
+	// Obtain the pointers to the start and end of the array
 	accounts_t::iterator	acc_begin	= accounts.begin();
 	accounts_t::iterator	acc_end		= accounts.end();
 

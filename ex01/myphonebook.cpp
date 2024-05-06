@@ -6,13 +6,14 @@
 /*   By: lannur-s <lannur-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 10:54:46 by lannur-s          #+#    #+#             */
-/*   Updated: 2024/04/30 15:55:13 by lannur-s         ###   ########.fr       */
+/*   Updated: 2024/05/06 13:37:44 by lannur-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cstdlib>
 #include <limits>
 #include "phonebook.hpp"
+
 
 void    menu(void)
 {
@@ -45,8 +46,14 @@ int main()
 	menu();
 	while (1)
 	{
-		std::cout << "Enter your command: ";		
-		getline(std::cin, input);
+		std::cout << "Enter your command: ";
+		//getline(std::cin, input);
+		if (!std::getline(std::cin, input))
+		{
+			std::cout << std::endl;
+			break ;
+		}
+		
 		if (input == "ADD")
 		{
 			std::cout << "╔═════════════════════════════════════════╗" << std::endl;
@@ -80,7 +87,7 @@ int main()
 			}
 			else if (isValidPhoneNumber(phoneNumber))
 			{
-				Contact contact(index, firstName, lastName, nickName, phoneNumber, darkestSecret);
+				Contact contact(firstName, lastName, nickName, phoneNumber, darkestSecret);
 				pb.addContact(contact_count, contact);
 				index++;
 				contact_count++;

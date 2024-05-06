@@ -6,7 +6,7 @@
 /*   By: lannur-s <lannur-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 10:46:07 by lannur-s          #+#    #+#             */
-/*   Updated: 2024/04/30 15:04:15 by lannur-s         ###   ########.fr       */
+/*   Updated: 2024/05/06 13:26:13 by lannur-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // Default constructor
 Contact::Contact()
 {
-	this->index = 0;
+
 }
 
 // Default Destructor
@@ -24,21 +24,14 @@ Contact::~Contact()
 }
 
 // Parameterized constructor
-Contact::Contact(int index, std::string firstName, std::string lastName, \
+Contact::Contact(std::string firstName, std::string lastName, \
 			std::string nickName, std::string phoneNumber, std::string darkestSecret)
 {
-	setIndex(index);
 	setFirstName(firstName);
 	setLastName(lastName);
 	setNickName(nickName);
 	setPhoneNumber(phoneNumber);
 	setDarkestSecret(darkestSecret);
-}
-
-// Set the index of the contact
-void	Contact::setIndex(int index)
-{
-	this->index = index;
 }
 
 // Set the first name of the contact
@@ -71,47 +64,41 @@ void	Contact::setDarkestSecret(std::string darkestSecret)
 	this->darkestSecret = darkestSecret;
 }
 
-// Return the index of the contact
-int	Contact::getIndex(void)
-{
-	return (this->index);
-}
-
 // Return the first name of the contact
-std::string	Contact::getFirstName(void)
+std::string	Contact::getFirstName(void) const
 {
 	return (this->firstName);
 }
 
 // Return the last name of the contact
-std::string	Contact::getLastName(void)
+std::string	Contact::getLastName(void) const
 {
 	return (this->lastName);
 }
 
 // Return the nickname of the contact
-std::string	Contact::getNickName(void)
+std::string	Contact::getNickName(void) const
 {
 	return (this->nickName);
 }
 
 // Return the phone number of the contact
-std::string	Contact::getPhoneNumber(void)
+std::string	Contact::getPhoneNumber(void) const
 {
 	return (this->phoneNumber);
 }
 
 // Return the darkest secret of the contact
-std::string	Contact::getDarkestSecret(void)
+std::string	Contact::getDarkestSecret(void) const
 {
 	return (this->darkestSecret);
 }
 
 /* Prints the contact information to the console,
-   including the index, first name, last name, nickname, 
+   including the first name, last name, nickname, 
    phone number and darkest secret of the contact.
 */
-void	Contact::displayContactInfo(void)
+void	Contact::displayContactInfo(void) const
 {
 	std::cout << "+-----------------------------------------+\n";
 	std::cout << "| ";

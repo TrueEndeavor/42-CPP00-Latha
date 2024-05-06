@@ -6,7 +6,7 @@
 /*   By: lannur-s <lannur-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 11:18:32 by lannur-s          #+#    #+#             */
-/*   Updated: 2024/04/30 10:16:15 by lannur-s         ###   ########.fr       */
+/*   Updated: 2024/05/06 13:49:22 by lannur-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 class	PhoneBook
 {
 	private:
-		Contact contacts_array[MAX_CONTACTS];
+		Contact	contacts_array[MAX_CONTACTS];
 
 	public:
 		// Default constructor
@@ -33,10 +33,10 @@ class	PhoneBook
 
 		// Default destructor
 		~PhoneBook(void);
-		
+
 		void addContact(int index, Contact contact);
 		void searchContact(void);
-		void displayContacts(void);
+		void displayContacts(void) const;
 };
 
 #endif

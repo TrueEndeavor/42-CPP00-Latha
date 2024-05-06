@@ -6,7 +6,7 @@
 /*   By: lannur-s <lannur-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 10:45:27 by lannur-s          #+#    #+#             */
-/*   Updated: 2024/04/30 14:56:02 by lannur-s         ###   ########.fr       */
+/*   Updated: 2024/05/06 14:44:43 by lannur-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ void    PhoneBook::searchContact(void)
 	while (1)
 	{
 		std::cout << "\nEnter an index or press ENTER to return: ";
-		std::getline(std::cin, index);
+		if (!std::getline(std::cin, index))
+			break ;
 		if (index.empty())
 		{
 			break ;
@@ -53,21 +54,30 @@ void    PhoneBook::searchContact(void)
 		}
 		else
 		{
-			this->contacts_array[(index[0] - '1')].displayContactInfo();
+			std::cout << this->contacts_array[index[0] - '1'].getFirstName() << std::endl;
+			std::cout << index[0] - '0' << std::endl;
+				// also check if the given index exists
+			for (int i = 0; i < MAX_CONTACTS; i++)
+			{
+				if (i == (index[0] - '0'))
+				{
+					std::cout << "in the correct index.";
+					this->contacts_array[index[0] - '0'].displayContactInfo();
+				}
+			}
 			std::cout << "          SEARCH CONTACT        ";
-			//(this->contacts_array[(index[0] - '0')]).displayContactInfo();
 		}
 	//this->displayContacts();
 	}
 }
 
-void    PhoneBook::displayContacts(void)
+void    PhoneBook::displayContacts(void) const
 {
 	for (int i = 0; i < MAX_CONTACTS; i++)
 	{
-		if (this->contacts_array[i].getIndex() > 0)
+		if ((this->contacts_array[i].getFirstName())[0] != '\0')
 		{
-			std::cout << std::right << this->contacts_array[i].getIndex() << "| ";
+			std::cout << std::right << (i + 1) << "| ";
 			std::cout << std::setw(10) << formatWidth(this->contacts_array[i].getFirstName()) << "| ";
 			std::cout << std::setw(10) << formatWidth(this->contacts_array[i].getLastName()) << "| ";
 			std::cout << std::setw(10) << formatWidth(this->contacts_array[i].getNickName()) << std::endl;
