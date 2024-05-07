@@ -28,6 +28,9 @@ int		main( void ) {
 	int	const				amounts[]	= { 42, 54, 957, 432, 1234, 0, 754, 16576 };
 	
 	// Calculate the size of the amounts array to determine the number of elements
+	// Ideally this has to be in this format: 
+	// const size_t amounts_size = sizeof(amounts) / sizeof(int);
+	// Constructor-style initialization type variable_name(initial value)
 	size_t const			amounts_size( sizeof(amounts) / sizeof(int) );
 	
 	// Initialize a vector of Account objects with initial deposit amounts
@@ -39,7 +42,7 @@ int		main( void ) {
 	// Obtain the pointers to the start and end of the array
 	accounts_t::iterator	acc_begin	= accounts.begin();
 	accounts_t::iterator	acc_end		= accounts.end();
-
+	
 	int	const			d[]			= { 5, 765, 564, 2, 87, 23, 9, 20 };
 	size_t const		d_size( sizeof(d) / sizeof(int) );
 	ints_t				deposits( d, d + d_size );
@@ -51,7 +54,7 @@ int		main( void ) {
 	ints_t				withdrawals( w, w + w_size );
 	ints_t::iterator	wit_begin	= withdrawals.begin();
 	ints_t::iterator	wit_end		= withdrawals.end();
-
+	
 	Account::displayAccountsInfos();
 	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) );
 
