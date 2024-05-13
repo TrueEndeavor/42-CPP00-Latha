@@ -14,6 +14,22 @@
 #include <limits>
 #include "phonebook.hpp"
 
+/*
+  Exercise 01: My Awesome PhoneBook: Static Memory PhoneBook Manager
+ +----------------------+---------------------------------------------------------------+
+ |       Keyword        |                          Description                          |
+ +----------------------+---------------------------------------------------------------+
+ | Classes              |  Implementing PhoneBook and Contact classes                   |
+ | Encapsulation        |  Defining private and public members within classes           |
+ | Arrays               |  Storing contacts within the PhoneBook class                  |
+ | Static Members       |  Storing contacts statically, dynamic allocation forbidden    |
+ | User Interaction     |  Handling user input for adding, searching, and exiting       |
+ | Data Validation      |  Ensuring non-empty fields, non-valid phone number for contact|
+ | Output Formatting    |  Formatting contact display for SEARCH command                |
+ | Error Handling       |  Managing errors for invalid commands or out-of-range index   |
+ | Program Flow Control |  Implementing logic for continuous command prompt until EXIT  |
+ +----------------------+---------------------------------------------------------------+
+*/
 
 void    menu(void)
 {

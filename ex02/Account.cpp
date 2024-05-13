@@ -15,6 +15,20 @@
 #include <ctime>
 #include "Account.hpp"
 
+/*
++----------------------+-----------------------------------------------------------------+
+|       Keyword        |                           Description                           |
++----------------------+-----------------------------------------------------------------+
+| Header Files         | Using Account.hpp to guide the implementation                   |
+| File Compilation     | Ensuring successful compilation of tests.cpp                    |
+| Log Analysis         | Utilizing log file to understand Account class implementation   |
+| Class Implementation | Recreating Account.cpp based on provided information            |
+| Test Validation      | Ensuring program output matches expectations from log file      |
+| Static Members       | Potential utilization of static members in class                |
+| Const Members        | Potentially using const members in class implementation         |
++----------------------+-----------------------------------------------------------------+
+*/
+
 int	Account::_nbAccounts = 0;
 int	Account::_totalAmount = 0;
 int	Account::_totalNbDeposits = 0;

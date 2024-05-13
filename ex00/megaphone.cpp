@@ -13,6 +13,18 @@
 #include <iostream>
 #include <string>
 
+/*
+  Exercise 00: Megaphone: Command-Line Shouter
+ +----------------------+-------------------------------------------------------------------+
+ |          Keyword     |                                  Description                      |
+ +----------------------+-------------------------------------------------------------------+
+ | Command-line args    |  Handling arguments passed to the program via the command line    |
+ | String manipulation  |  Modifying and processing strings                                 |
+ | Character case conv  |  Converting characters to uppercase                               |
+ | Output formatting    |  Formatting the program output according to specified requirements|
+ +----------------------+-------------------------------------------------------------------+
+*/
+
 /* Print each character of the input string in uppercase */
 void  printUpperCase(std::string str)
 {

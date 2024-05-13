@@ -50,22 +50,21 @@ void    PhoneBook::searchContact(void)
 		else if (index.length() != 1 || index[0] < '1' || index[0] > '8')
 		{
 			std::cout << "Invalid index. Try again.";
-			std::cin.ignore();
+			std::cout << std::endl;
+			//std::cin.ignore();
 		}
 		else
 		{
-			std::cout << this->contacts_array[index[0] - '1'].getFirstName() << std::endl;
-			std::cout << index[0] - '0' << std::endl;
+			//std::cout << this->contacts_array[index[0] - '1'].getFirstName() << std::endl;
+			//std::cout << index[0] - '0' << std::endl;
 				// also check if the given index exists
 			for (int i = 0; i < MAX_CONTACTS; i++)
 			{
-				if (i == (index[0] - '0'))
+				if (i == (index[0] - '0') - 1)
 				{
-					std::cout << "in the correct index.";
-					this->contacts_array[index[0] - '0'].displayContactInfo();
+					this->contacts_array[(index[0] - '0') - 1].displayContactInfo();
 				}
 			}
-			std::cout << "          SEARCH CONTACT        ";
 		}
 	//this->displayContacts();
 	}
