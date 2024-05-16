@@ -6,7 +6,7 @@
 #    By: lannur-s <lannur-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/20 15:49:02 by lannur-s          #+#    #+#              #
-#    Updated: 2024/05/08 19:47:50 by lannur-s         ###   ########.fr        #
+#    Updated: 2024/05/16 09:49:33 by lannur-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ $(NAME): $(OBJ)
 clean:
 	@$(RM) $(OBJ)
 
-fclean:
+fclean: clean
 	@$(RM) $(NAME)
 
 re: clean all

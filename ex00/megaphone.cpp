@@ -6,7 +6,7 @@
 /*   By: lannur-s <lannur-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 10:41:37 by lannur-s          #+#    #+#             */
-/*   Updated: 2024/04/23 10:41:40 by lannur-s         ###   ########.fr       */
+/*   Updated: 2024/05/16 09:58:55 by lannur-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 /*
   Exercise 00: Megaphone: Command-Line Shouter
  +----------------------+-------------------------------------------------------------------+
- |          Keyword     |                                  Description                      |
+ |    Functionality     |                                  Description                      |
  +----------------------+-------------------------------------------------------------------+
  | Command-line args    |  Handling arguments passed to the program via the command line    |
  | String manipulation  |  Modifying and processing strings                                 |
- | Character case conv  |  Converting characters to uppercase                               |
+ | Character case conv  |  Converting characters to uppercase - std::toupper(char)          |
  | Output formatting    |  Formatting the program output according to specified requirements|
  +----------------------+-------------------------------------------------------------------+
 */

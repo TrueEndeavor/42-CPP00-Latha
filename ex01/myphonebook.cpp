@@ -6,7 +6,7 @@
 /*   By: lannur-s <lannur-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 10:54:46 by lannur-s          #+#    #+#             */
-/*   Updated: 2024/05/06 13:37:44 by lannur-s         ###   ########.fr       */
+/*   Updated: 2024/05/16 15:36:15 by lannur-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 
 void    menu(void)
 {
-	std::cout << "╔═════════════════════════════════════════╗" << std::endl;
+	std::cout << MAGENTA << "╔═════════════════════════════════════════╗" << std::endl;
 	std::cout << "║  Welcome to my ✏️📔✏️ vintage phonebook!  ║" << std::endl;
 	std::cout << "║ Type one of these commands to start:    ║" << std::endl;
 	std::cout << "║             📝 ADD                      ║" << std::endl;
@@ -41,6 +41,8 @@ void    menu(void)
 	std::cout << "║             🚪 EXIT                     ║" << std::endl;
 	std::cout << "╚═════════════════════════════════════════╝" << std::endl;
 }
+
+
 
 int main()
 {
@@ -62,8 +64,12 @@ int main()
 	menu();
 	while (1)
 	{
+		firstName = "";
+		lastName = "";
+		nickName = "";
+		phoneNumber = "";
+		darkestSecret = "";
 		std::cout << "Enter your command: ";
-		//getline(std::cin, input);
 		if (!std::getline(std::cin, input))
 		{
 			std::cout << std::endl;
@@ -72,59 +78,51 @@ int main()
 		
 		if (input == "ADD")
 		{
-			std::cout << "╔═════════════════════════════════════════╗" << std::endl;
-			std::cout << "║         📝 ADD A NEW CONTACT            ║" << std::endl;
-			std::cout << "╚═════════════════════════════════════════╝" << std::endl;
+			std::cout << GREEN << "                    ╔═════════════════════════════════════════╗" << RESET << std::endl;
+			std::cout << GREEN << "                    ║         📝 ADD A NEW CONTACT            ║" << RESET << std::endl;
+			std::cout << GREEN << "                    ╚═════════════════════════════════════════╝" << RESET << std::endl;
 
 			if (contact_count > MAX_CONTACTS)
 				contact_count = 0;
-			std::cout << "Enter required details for the contact:" << std::endl;;
-			std::cout << "👤 First name    :";
-			getline(std::cin, firstName);
-			std::cout << "👥 Last name     :";
-			getline(std::cin, lastName);
-			std::cout << "🤙 Nick name     :";
-			getline(std::cin, nickName);
-			std::cout << "📲 Phone number  :";
-			getline(std::cin, phoneNumber);
-			std::cout << "🤫 Darkest secret  :";
-			getline(std::cin, darkestSecret);
-			if (!isValidPhoneNumber(phoneNumber))
-			{
-				std::cout << "\nPhone number is not valid. Please provide 10-digit valid phone number." << std::endl;
-				std::cout << "Press ENTER to continue." << std::endl;
-				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Wait for Enter
-			}
-			if (firstName.empty() || lastName.empty() || nickName.empty() || phoneNumber.empty() || darkestSecret.empty())
-			{
-				std::cout << "\nContact cannot have any empty fields. Please provide info for all the fields.\n" << std::endl;
-				std::cout << "Press ENTER to continue." << std::endl;
-				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Wait for Enter
-			}
-			else if (isValidPhoneNumber(phoneNumber))
-			{
-				Contact contact(firstName, lastName, nickName, phoneNumber, darkestSecret);
-				pb.addContact(contact_count, contact);
-				index++;
-				contact_count++;
-				std::cout << "\nContact added successfully.\nPress ENTER to continue." << std::endl;
-				std::cin.ignore();
-			}
+			std::cout << GREEN << "                    Enter required details for the contact:" << std::endl;;
+			if (get_input("                    👤 First name     :", &firstName))
+				break ;
+			if (get_input("                    👥 Last name      :", &lastName))
+				break ;
+			if (get_input("                    🤙 Nick name      :", &nickName))
+				break ;
+			if (get_input("                    📲 Phone number   :", &phoneNumber))
+				break ;
+			if (get_input("                    🤫 Darkest secret :", &darkestSecret))
+				break ;				
+			Contact contact(firstName, lastName, nickName, phoneNumber, darkestSecret);
+			pb.addContact(contact_count, contact);
+			index++;
+			contact_count++;
+			std::cout << GREEN << "\n                    Contact added successfully." << std::endl;
+			std::cout << GREEN << "\n                    Press ENTER to continue." << RESET << std::endl;
+			std::cin.ignore();
 		}
 		else if (input == "SEARCH")
 		{
+			std::cout << YELLOW << "                    ╔═════════════════════════════════════════╗" << std::endl;  
+			std::cout << YELLOW << "                    ║         ✏️📔✏️ My Contact List            ║" << std::endl;
+			std::cout << YELLOW << "                    ╚═════════════════════════════════════════╝" << std::endl;
 			if (contact_count == 0) {
-				std::cout << "No contacts found. Phonebook is empty. \nPress ENTER to return." << std::endl;
+				std::cout << "                    No contacts found. Phonebook is empty." << std::endl;
+				std::cout << "                    Press ENTER to continue." << std::endl;
 				std::cin.ignore();
 			}
 			else
 			{
 				pb.searchContact();
 			}
+			std::cout << RESET;
 		}
 		else if (input == "EXIT")
 		{
-			std::cout << "Exiting the phonebook. Goodbye!" << std::endl;
+			std::cout << MAGENTA << "\nExiting the phonebook. Goodbye!\n" << std::endl;
+			std::cout << RESET;
 			std::cout << std::endl;
 			std::cout << std::endl;
 			std::cout << std::endl;
@@ -132,7 +130,8 @@ int main()
 		}
 		else
 		{
-			std::cout << "Invalid command. Please type one of these commands: \nADD, SEARCH, or EXIT\nPress ENTER to return." << std::endl;
+			std::cout << "\nInvalid command. Please type one of these commands: \nADD, SEARCH, or EXIT.\nPress ENTER to return." << std::endl;
+			std::cout << std::endl;
 			std::cin.ignore();
 		}
 		system("clear");

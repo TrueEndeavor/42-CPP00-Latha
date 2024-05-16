@@ -6,7 +6,7 @@
 #    By: lannur-s <lannur-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/23 10:42:15 by lannur-s          #+#    #+#              #
-#    Updated: 2024/04/29 11:01:41 by lannur-s         ###   ########.fr        #
+#    Updated: 2024/05/16 10:00:41 by lannur-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ all: $(NAME)
 	$(CC) $(FLAGS) $(INCLUDE) -c $< -o $@
 	
 $(NAME): $(OBJ)
-	@ $(CC) $(FLAGS) $(INCLUDE) $(OBJ) -o $(NAME)
+	@$(CC) $(FLAGS) $(INCLUDE) $(OBJ) -o $(NAME)
 
 clean:
 	@$(RM) $(OBJ)

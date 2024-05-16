@@ -6,7 +6,7 @@
 /*   By: lannur-s <lannur-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 10:46:07 by lannur-s          #+#    #+#             */
-/*   Updated: 2024/05/06 13:26:13 by lannur-s         ###   ########.fr       */
+/*   Updated: 2024/05/16 12:38:54 by lannur-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,25 +102,36 @@ void	Contact::displayContactInfo(void) const
 {
 	if ((getFirstName()[0]) != '\0')
 	{
+		std::cout << "                    ";
 		std::cout << "+-----------------------------------------+\n";
+		std::cout << "                    ";		
 		std::cout << "| ";
 		std::cout << std::setw(20) << std::right << "First Name: " << std::setw(20) << std::left << getFirstName();
 		std::cout << "|\n";
+		std::cout << "                    ";		
 		std::cout << "| ";
 		std::cout << std::setw(20) << std::right << "Last Name: " << std::setw(20) << std::left << getLastName();
 		std::cout << "|\n";
+		std::cout << "                    ";		
 		std::cout << "| ";
 		std::cout << std::setw(20) << std::right << "Nickname: " << std::setw(20) << std::left << getNickName();
 		std::cout << "|\n";
+		std::cout << "                    ";		
 		std::cout << "| ";
 		std::cout << std::setw(20) << std::right << "Phone Number: " << std::setw(20) << std::left << getPhoneNumber();
 		std::cout << "|\n";
+		std::cout << "                    ";
 		std::cout << "| ";
 		std::cout << std::setw(20) << std::right << "Darkest Secret: " << std::setw(20) << std::left << getDarkestSecret();
 		std::cout << "|\n";
+		std::cout << "                    ";		
 		std::cout << "+-----------------------------------------+\n";
+		std::cout << "                    ";		
 		std::cout << std::endl;		
 	}
 	else
+	{
+		std::cout << "                    ";	
 		std::cout << "Invalid index. Try again." << std::endl;
+	}
 }

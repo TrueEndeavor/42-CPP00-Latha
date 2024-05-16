@@ -37,6 +37,12 @@ int		main( void ) {
 	// Initialize 'accounts' vector with Account objects based on 'amounts' array
 	// Copies values from 'amounts' to create Account objects
 	// Remember, it is not a copy of the array, because it is vector (dynamic array)
+	
+	/* ************* ************* ************* ************* ************* 
+	   Multiple accounts are created with unique indexes and initial amounts, 
+	   updating total account count and amount.
+	  ************* ************* ************* ************* ************* */
+	/* Log messages about "create" of multiple accounts */
 	accounts_t				accounts( amounts, amounts + amounts_size );
 	
 	// Obtain the pointers to the start and end of the array
@@ -55,29 +61,59 @@ int		main( void ) {
 	ints_t::iterator	wit_begin	= withdrawals.begin();
 	ints_t::iterator	wit_end		= withdrawals.end();
 	
+	/* ************* ************* ************* ************* 
+	   Log message about the account summary
+	   ************* ************* ************* ************* */
 	Account::displayAccountsInfos();
+	
+	/* ************* ************* ************* ************* 
+	   Log message about the individual accounts
+	   ************* ************* ************* ************* */
 	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) );
 
+	/* ************* ************* ************* ************* ************* 
+	   Deposits are made into each account, updating balances and total deposit count
+	  ************* ************* ************* ************* ************* */
 	for ( acc_int_t it( acc_begin, dep_begin );
 		  it.first != acc_end && it.second != dep_end;
-		  ++(it.first), ++(it.second) ) {
-
+		  ++(it.first), ++(it.second) ) 
+	{
 		(*(it.first)).makeDeposit( *(it.second) );
 	}
 
+	/* ************* ************* ************* ************* 
+	   Log message about the account summary
+	   ************* ************* ************* ************* */
 	Account::displayAccountsInfos();
+	
+	/* ************* ************* ************* ************* ************* ************* 
+	   Log message about the individual accounts (after updated with new deposits)
+	   ************* ************* ************* ************* ************* ************* */	
 	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) );
 
+	/* ************* ************* ************* ************* ************* 
+	   Withdrawals are attempted from each account, updating balances and total withdrawal count
+	  ************* ************* ************* ************* ************* */
 	for ( acc_int_t it( acc_begin, wit_begin );
 		  it.first != acc_end && it.second != wit_end;
-		  ++(it.first), ++(it.second) ) {
-
+		  ++(it.first), ++(it.second) )
+	{
 		(*(it.first)).makeWithdrawal( *(it.second) );
 	}
 
+	/* ************* ************* ************* ************* 
+	   Log message about the account summary
+	   ************* ************* ************* ************* */
 	Account::displayAccountsInfos();
+	
+	/* ************* ************* ************* ************* ************* ************* 
+	   Log message about the individual accounts (after updated with new withdrawals)
+	   ************* ************* ************* ************* ************* ************* */	
 	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) );
 
+	/* ************* ************* ************* ************* ************* ************* 
+	   Log message about the closing of accounts, as the objects get deleted automatically
+	   ************* ************* ************* ************* ************* ************* */	
 	return 0;
 }
 

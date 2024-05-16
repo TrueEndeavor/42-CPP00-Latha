@@ -39,19 +39,28 @@ public:
 
 
 private:
+	/*---------------- Accross all objects ----------------*/
+	// Static variable to keep track of the total number of accounts created
+	static int _nbAccounts;
+	// Static variable to keep track of the total amount of money across all accounts
+	static int _totalAmount;
+	// Static variable to keep track of the total number of deposits made across all accounts
+	static int _totalNbDeposits;
+	// Static variable to keep track of the total number of withdrawals made across all accounts
+	static int _totalNbWithdrawals;
 
-	static int	_nbAccounts;
-	static int	_totalAmount;
-	static int	_totalNbDeposits;
-	static int	_totalNbWithdrawals;
-
+	/*---------------- Each object ----------------*/
+	// Index of the account
+	int _accountIndex;
+	// Current balance amount in the account
+	int _amount;
+	// Number of deposits made into this account
+	int _nbDeposits;
+	// Number of withdrawals made from this account
+	int _nbWithdrawals;
+	
 	static void	_displayTimestamp( void );
-
-	int				_accountIndex;
-	int				_amount;
-	int				_nbDeposits;
-	int				_nbWithdrawals;
-
+	
 	Account( void );
 
 };
